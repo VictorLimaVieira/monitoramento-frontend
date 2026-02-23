@@ -15,7 +15,7 @@ export function Cadastro() {
 
         try {
             // 🚨 Endereço completo apontando para o NestJS
-            const resposta = await axios.post('https://api-nest-estudo.onrender.com/cadastro', {
+            const resposta = await axios.post('https://monitoramento-frontend-ashen.vercel.app/cadastro', {
                 nome: nome,
                 email: email,
                 senha: senha
