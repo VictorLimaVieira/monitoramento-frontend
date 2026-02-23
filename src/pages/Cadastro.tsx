@@ -15,7 +15,7 @@ export function Cadastro() {
 
         try {
             // 🚨 Endereço completo apontando para o NestJS
-            const resposta = await axios.post('https://api-nest-estudo.onrender.com/usuarios', {
+            const resposta = await axios.post('https://api-nest-estudo.onrender.com/cadastro', {
                 nome: nome,
                 email: email,
                 senha: senha
