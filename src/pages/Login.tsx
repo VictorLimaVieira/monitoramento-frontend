@@ -12,7 +12,7 @@ export function Login() {
         e.preventDefault();
 
         try {
-            const resposta = await axios.post('http://localhost:3000/auth/login', {
+            const resposta = await axios.post('https://api-nest-estudo.onrender.com/auth/login', {
                 email: email,
                 senha: senha
             });
