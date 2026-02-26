@@ -1,6 +1,12 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export function Dashboard() {
+
+    const [nome, setNome] = useState('')
+    const [dosagem, setDosagem] = useState('')
+    const [horario, setHorario] = useState('')
+
     return (
         <div style={{
             minHeight: '100vh',
@@ -58,11 +64,20 @@ export function Dashboard() {
                     border: '2px dashed #bdc3c7',
                     color: '#95a5a6',
                     fontSize: '1.2rem'
-                }}>
-                    Nenhum medicamento cadastrado ainda.
+                }} >
+                        <input
+                        type="text"
+                        placeholder='Nome do medicamento (ex: Aspirina)?'
+                        value={nome}
+                        onChange={ (e) => setNome(e.target.value)}
+                        style={{ padding: '15px', borderRadius: '8px' }}
+     
+                         />
                 </div>
 
             </main>
         </div>
     );
+
+
 }
