@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export function Dashboard() {
+    const [listaMedicamentos, setListaMedicamentos] = useState<any[]>([]);
+
 
     const [nome, setNome] = useState('')
     const [dosagem, setDosagem] = useState('')
@@ -9,6 +11,18 @@ export function Dashboard() {
 
     const handleCadastrarMedicamento = async (e: React.FormEvent) => {
         e.preventDefault();
+        const novoMedicamento = {
+            nome: nome,
+            dosagem: dosagem,
+            horario: horario
+        };
+
+        setListaMedicamentos([...listaMedicamentos, novoMedicamento]);
+
+        setNome('');
+        setDosagem('');
+        setHorario('');
+
         console.log("Dados salvos:", nome, dosagem, horario);
     };
 
@@ -123,7 +137,21 @@ export function Dashboard() {
                     color: '#95a5a6',
                     fontSize: '1.2rem'
                 }}>
-                   Nenhum Medicamento Cadastrado ainda.     
+                   {listaMedicamentos.length === 0 ? (
+                    <div style={{marginTop: '40px', padding: '30px', backgroundColor: '#ffffff', borderRadius: '16px', border: '2px dashed #bdc3c7', color: '#95a5a6', fontSize: '1.2rem' }}>
+                        Nenhum medicamento cadastrado ainda.
+                    </div>
+                   ) : (
+                    <div style={{ marginTop: '40px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                        {listaMedicamentos.map((medicamento, index) => (
+                            <div key={index} style={{ padding: '20px', backgroundColor: '#fff', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', textAlign: 'left', borderLeft: '6px solid #3498db' }}>
+                                <h3 style={{ margin: '0 0 10px 0', color: '#2c3e50' }}>💊 {medicamento.nome}</h3>
+                                <p style={{ margin: '5px 0', color: '#7f8c8d' }}><strong>Dosagem:</strong> {medicamento.dosagem}</p>
+                                <p style={{ margin: '5px 0', color: '#7f8c8d' }}><strong>Horário:</strong> {medicamento.horario}</p>
+                            </div>
+                        ))}
+                    </div>
+                   )}     
                 </div>
 
             </main>
