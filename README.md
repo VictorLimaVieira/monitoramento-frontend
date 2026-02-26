@@ -1,3 +1,9 @@
+# 💊 Sistema de Monitoramento (Idoso Conectado)
+
+🚀 **Projeto Online e Funcional!**
+* **Acesse a Aplicação (Frontend):** [Clique aqui para abrir o site](COLE_O_LINK_DA_VERCEL_AQUI)
+* **Documentação da API (Backend Swagger):** [Clique aqui para testar a API](COLE_O_LINK_DA_RENDER_AQUI/api)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
