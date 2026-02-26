@@ -7,6 +7,11 @@ export function Dashboard() {
     const [dosagem, setDosagem] = useState('')
     const [horario, setHorario] = useState('')
 
+    const handleCadastrarMedicamento = async (e: React.FormEvent) => {
+        e.preventDefault();
+        console.log("Dados salvos:", nome, dosagem, horario);
+    };
+
     return (
         <div style={{
             minHeight: '100vh',
@@ -51,9 +56,62 @@ export function Dashboard() {
                 margin: '40px auto 0 auto'
             }}>
                 <h2 style={{ color: '#34495e', fontSize: '2.5rem'}}>Bem-vindo ao Monitorando!</h2>
-                <p style={{ fontSize: '1.5rem', color: '#7f8c8d', marginTop: '20px' }}>
-                    Em breve, sua lista de horários aparecerá aqui.
-                </p>
+                <form
+                    onSubmit={handleCadastrarMedicamento}
+                    style={{
+                        display: 'flex',
+                        msFlexDirection: 'column',
+                        gap: '15px',
+                        backgroundColor: '#fff',
+                        padding: '30px',
+                        borderRadius: '16px',
+                        marginTop: '30px',
+                        boxShadow: '0 4px 12px rgba(0, 0, 0.05)'
+                    }}
+                    
+                >
+                    <h3 style={{ margin: '0 0 15px 0', color: '#2c3e50', textAlign: 'left' }}>Cadastrar Novo Medicamento</h3>
+
+                    <input
+                        type="text"
+                        placeholder='Nome do medicamento (ex: Aspirina)?'
+                        value={nome}
+                        onChange={ (e) => setNome(e.target.value)}
+                        style={{ padding: '15px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '1rem' }}
+     
+                    />
+
+                    <input
+                         type="text"
+                         placeholder='Dosagem (ex: 500mg)'
+                         value={dosagem}
+                         onChange={(e) => setDosagem(e.target.value)}
+                         style={{ padding: '15px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '1rem' }}
+
+                    />
+
+                    <input
+                        type="time"
+                        value={horario}
+                        onChange={(e) => setHorario(e.target.value)}
+                        style={{ padding: '15px', borderRadius: '8px', border: '1px solid #ccc', fontSize: '1rem' }}
+                     />
+                     <button type="submit" style={{
+                        padding: '15px',
+                        backgroundColor: "#2ecc71",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "8px",
+                        fontSize: '1.2rem',
+                        cursor: 'pointer',
+                        fontWeight: 'bold',
+                        marginTop: '10px'
+                     }}> 
+                        Salvar Medicamento
+                     </button>
+
+
+                </form>
 
                 {/* Um "esqueleto" de como será o card de um remédio */}
                 <div style={{
@@ -64,15 +122,8 @@ export function Dashboard() {
                     border: '2px dashed #bdc3c7',
                     color: '#95a5a6',
                     fontSize: '1.2rem'
-                }} >
-                        <input
-                        type="text"
-                        placeholder='Nome do medicamento (ex: Aspirina)?'
-                        value={nome}
-                        onChange={ (e) => setNome(e.target.value)}
-                        style={{ padding: '15px', borderRadius: '8px' }}
-     
-                         />
+                }}>
+                   Nenhum Medicamento Cadastrado ainda.     
                 </div>
 
             </main>
